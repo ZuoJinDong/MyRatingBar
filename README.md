@@ -8,7 +8,6 @@
     rating 当前星值
     stars 星星总数
 
-    <!-- style for MyRatingBar  -->
     <declare-styleable name="MyRatingBar">
         <attr name="base_of_width_or_height" format="enum">
             <enum name="width" value="0"/>
