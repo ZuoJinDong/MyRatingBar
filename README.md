@@ -21,8 +21,6 @@
     
     
     根布局添加 xmlns:app="http://schemas.android.com/apk/res-auto"<br><br>
-    
-    
     <com.zjd.myratingbar.MyRatingBar
         app:base_of_width_or_height="width"
         app:stars="15"
@@ -30,7 +28,7 @@
         app:rating="10"
         android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="30dp" />
+        android:layout_height="30dp" /><br>
 
     private void drawStars(Canvas canvas) {
         Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.icon_star_yellow_128)).getBitmap();
