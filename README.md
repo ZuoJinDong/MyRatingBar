@@ -31,6 +31,7 @@
         android:layout_width="300dp"
         android:layout_height="30dp" />
 
+根布局添加 xmlns:app="http://schemas.android.com/apk/res-auto"<br><br>
 
     private void drawStars(Canvas canvas) {
         Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.icon_star_yellow_128)).getBitmap();
