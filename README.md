@@ -31,8 +31,7 @@
         android:layout_width="300dp"
         android:layout_height="30dp" />
 
-    ###核心部分(根据手指在X轴的滑动画Bitmap)<br>
-
+    核心部分(根据手指在X轴的滑动画Bitmap)<br><br>
     private void drawStars(Canvas canvas) {
         Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.icon_star_yellow_128)).getBitmap();
         stepWidth=step*starWidth;
