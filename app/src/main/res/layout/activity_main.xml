@@ -9,10 +9,34 @@
     tools:context="com.zjd.myratingbar.MainActivity">
 
     <com.zjd.myratingbar.MyRatingBar
+        android:layout_margin="20dp"
+        android:background="#fd0000"
         app:base_of_width_or_height="width"
         app:stars="15"
         app:step="1"
         app:rating="10"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="30dp" />
+
+    <com.zjd.myratingbar.MyRatingBar
+        android:layout_margin="20dp"
+        android:background="#fd0000"
+        app:base_of_width_or_height="width"
+        app:stars="10"
+        app:step="0.5"
+        app:rating="5"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="30dp" />
+
+    <com.zjd.myratingbar.MyRatingBar
+        android:layout_margin="20dp"
+        android:background="#fd0000"
+        app:base_of_width_or_height="height"
+        app:stars="5"
+        app:step="0.01"
+        app:rating="5"
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_height="30dp" />
