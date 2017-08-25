@@ -4,9 +4,9 @@
   
   ##只设置了常用的几个属性
     
-  base_of_width_or_height 以宽度为准或已高度为准
-  step 滑动间距
-  rating 当前星值
+  base_of_width_or_height 以宽度为准或已高度为准<br>
+  step 滑动间距<br>
+  rating 当前星值<br>
   stars 星星总数
 
     <declare-styleable name="MyRatingBar">
@@ -22,13 +22,13 @@
     
     根布局添加 xmlns:app="http://schemas.android.com/apk/res-auto"
     
-    <com.zjd.myratingbar.MyRatingBar
-        app:base_of_width_or_height="width"
-        app:stars="15"
-        app:step="1"
-        app:rating="10"
-        android:layout_gravity="center"
-        android:layout_width="300dp"
+    <com.zjd.myratingbar.MyRatingBar<br>
+        app:base_of_width_or_height="width"<br>
+        app:stars="15"<br>
+        app:step="1"<br>
+        app:rating="10"<br>
+        android:layout_gravity="center"<br>
+        android:layout_width="300dp"<br>
         android:layout_height="30dp" />
 
     private void drawStars(Canvas canvas) {
