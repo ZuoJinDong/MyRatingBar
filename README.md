@@ -20,11 +20,10 @@
     </declare-styleable>
     
     
-    根布局添加 xmlns:app="http://schemas.android.com/apk/res-auto"<br>
-    
+    根布局添加 xmlns:app="http://schemas.android.com/apk/res-auto"<br><br>
     <com.zjd.myratingbar.MyRatingBar<br>
-        app:base_of_width_or_height="width"<br>
-        app:stars="15"<br>
+    app:base_of_width_or_height="width"<br>
+    app:stars="15"<br>
     app:step="1"<br>
     app:rating="10"<br>
     android:layout_gravity="center"<br>
