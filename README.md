@@ -2,6 +2,10 @@
   解决官方RatingBar无法自由调整宽高的问题<br>
   可选则适应宽度或者高度
   
+  [我的简书](http://www.jianshu.com/p/22b71023c5f6)  
+  
+  ![MyRatingBar.gif](http://upload-images.jianshu.io/upload_images/7584515-e3b9c7013d856b4e.gif?)
+  
   ##只设置了常用的几个属性
     
   base_of_width_or_height 以宽度为准或已高度为准<br>
