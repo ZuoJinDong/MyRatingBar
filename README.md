@@ -31,3 +31,24 @@
         android:layout_width="300dp"
         android:layout_height="30dp" />
     
+
+    private void drawStars(Canvas canvas) {
+        Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.icon_star_yellow_128)).getBitmap();
+        stepWidth=step*starWidth;
+        int stepNum=(int)(currentX/stepWidth);
+        rating=round((double)stepNum*step,2);
+        for (int i = 0; i < stepNum*stepWidth/starWidth; i++) {
+            int leftX=starWidth*i;
+            int rightX=starWidth*(i+1);
+            int x=(int)(stepNum*stepWidth-starWidth*i);
+            if(currentX>leftX&&currentX<rightX){
+                canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth()*x/starWidth,bitmap.getHeight()),new Rect(leftX,0,x+i*starWidth,starWidth),paint);
+            }else{
+                if(stepNum*stepWidth/starWidth<i+1){
+                    canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth()*x/starWidth,bitmap.getHeight()),new Rect(leftX,0,x+i*starWidth,starWidth),paint);
+                }else {
+                    canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth(),bitmap.getHeight()),new Rect(leftX,0,rightX,starWidth),paint);
+                }
+            }
+        }
+    }
