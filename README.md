@@ -4,7 +4,7 @@
   
   [我的简书](http://www.jianshu.com/p/22b71023c5f6)  
   
-  ![](http://upload-images.jianshu.io/upload_images/7584515-e3b9c7013d856b4e.gif?imageMogr2/auto-orient/strip)
+  ![](upload-images.jianshu.io/upload_images/7584515-e3b9c7013d856b4e.gif?imageMogr2/auto-orient/strip)
   
   ##只设置了常用的几个属性
     
