@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- style for MyRatingBar  -->
+    <declare-styleable name="MyRatingBar">
+        <attr name="base_of_width_or_height" format="enum">
+            <enum name="width" value="0"/>
+            <enum name="height" value="1"/>
+        </attr>
+        <attr name="step" format="float"/>
+        <attr name="rating" format="float"/>
+        <attr name="stars" format="integer"/>
+    </declare-styleable>
+
+</resources>
