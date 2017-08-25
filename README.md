@@ -4,6 +4,8 @@
   
   [我的简书](http://www.jianshu.com/p/22b71023c5f6)  
   
+  ![微信](https://github.com/zjd77065163/GIF/blob/master/WeChat.jpg)  
+  
   ![](https://github.com/zjd77065163/GIF/blob/master/MyRatingBar.gif)  
   
   ##只设置了常用的几个属性
