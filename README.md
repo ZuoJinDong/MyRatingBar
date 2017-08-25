@@ -30,7 +30,7 @@
         app:rating="10"
         android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="30dp" /><br>
+        android:layout_height="30dp" />
 
 
     private void drawStars(Canvas canvas) {
