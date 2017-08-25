@@ -2,6 +2,8 @@
   解决官方RatingBar无法自由调整宽高的问题
   可选则适应宽度或者高度
   
+  
+  
   ##只设置了常用的几个属性
     base_of_width_or_height 以宽度为准或已高度为准
     step 滑动间距
