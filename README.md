@@ -28,8 +28,8 @@
         app:rating="10"
         android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="30dp" />
-  
+        android:layout_height="30dp" >
+    </com.zjd.myratingbar.MyRatingBar>
 
     private void drawStars(Canvas canvas) {
         Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.icon_star_yellow_128)).getBitmap();
