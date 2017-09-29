@@ -20,31 +20,41 @@
         android:layout_height="30dp" />
 
     <com.zjd.myratingbar.MyRatingBar
+<<<<<<< HEAD
         android:id="@+id/ratingBar_2"
+>>>>>>> f34bc32c17e7081ab6632ba92093793bfcecfbec
         android:layout_margin="20dp"
         android:background="#fd0000"
         app:base_of_width_or_height="width"
         app:stars="10"
         app:step="0.5"
+<<<<<<< HEAD
         app:isIndicator="true"
+>>>>>>> f34bc32c17e7081ab6632ba92093793bfcecfbec
         app:rating="5"
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_height="30dp" />
 
     <com.zjd.myratingbar.MyRatingBar
+<<<<<<< HEAD
         android:id="@+id/ratingBar_3"
+=======
         android:layout_margin="20dp"
         android:background="#fd0000"
         app:base_of_width_or_height="height"
         app:stars="5"
         app:step="0.01"
         app:rating="5"
+<<<<<<< HEAD
         app:isIndicator="true"
+=======
+>>>>>>> f34bc32c17e7081ab6632ba92093793bfcecfbec
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_height="30dp" />
 
+<<<<<<< HEAD
     <TextView
         android:text="123"
         android:textColor="#000000"
@@ -70,4 +80,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+=======
+>>>>>>> f34bc32c17e7081ab6632ba92093793bfcecfbec
 </LinearLayout>
