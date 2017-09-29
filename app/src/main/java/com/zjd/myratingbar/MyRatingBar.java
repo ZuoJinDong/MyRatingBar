@@ -24,10 +24,11 @@ public class MyRatingBar extends View {
     private int height;//设置高
 
     private Paint paint;
+    private boolean isIndicator=true;
     //星星总数
-    private int starSum=3;
+    private int starSum=5;
     //当前星星数
-    private float rating=3;
+    private float rating=5;
     //每步间隔
     private float step=0.1f;
     //每步距离
@@ -36,6 +37,11 @@ public class MyRatingBar extends View {
     private int starWidth=0;
     //适应宽高度(0:宽度,1:高度)
     private int width_height=0;
+
+    private int bitmapWidth=0;
+    private int bitmapHeight=0;
+
+    private OnRatingBarChangeListener mOnRatingBarChangeListener;
 
     public MyRatingBar(Context context) {
         super(context);
@@ -58,8 +64,9 @@ public class MyRatingBar extends View {
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MyRatingBar);
+        isIndicator=a.getBoolean(R.styleable.MyRatingBar_isIndicator,true);
         starSum=a.getInt(R.styleable.MyRatingBar_stars,5);
-        step=a.getFloat(R.styleable.MyRatingBar_step,1f);
+        step=a.getFloat(R.styleable.MyRatingBar_step,0.1f);
         width_height=a.getInt(R.styleable.MyRatingBar_base_of_width_or_height, 0);
         rating=a.getFloat(R.styleable.MyRatingBar_rating,starSum);
     }
@@ -76,9 +83,9 @@ public class MyRatingBar extends View {
      * @param canvas
      */
     private void drawBackgroundStars(Canvas canvas) {
-        Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.icon_star_gray_128)).getBitmap();
+        Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.star_gray_64)).getBitmap();
         for (int i = 0; i < starSum; i++) {
-            canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth(),bitmap.getHeight()),new Rect(starWidth*i,0,starWidth*(i+1),starWidth),paint);
+            canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth(),bitmap.getHeight()),new Rect(starWidth*i,0,starWidth*(i+1),starWidth*bitmapHeight/bitmapWidth),paint);
         }
     }
 
@@ -87,21 +94,30 @@ public class MyRatingBar extends View {
      * @param canvas
      */
     private void drawStars(Canvas canvas) {
-        Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.icon_star_yellow_128)).getBitmap();
+        Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.star_yellow_64)).getBitmap();
         stepWidth=step*starWidth;
         int stepNum=(int)(currentX/stepWidth);
         rating=round((double)stepNum*step,2);
-        for (int i = 0; i < stepNum*stepWidth/starWidth; i++) {
+
+        float currentStarNum=stepNum*stepWidth/starWidth;
+        if(currentStarNum<1){
+            currentStarNum=1;
+            currentX=starWidth;
+            stepNum=(int)(currentX/stepWidth);
+            rating=round((double)stepNum*step,2);
+        }
+
+        for (int i = 0; i < currentStarNum; i++) {
             int leftX=starWidth*i;
             int rightX=starWidth*(i+1);
             int x=(int)(stepNum*stepWidth-starWidth*i);
             if(currentX>leftX&&currentX<rightX){
-                canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth()*x/starWidth,bitmap.getHeight()),new Rect(leftX,0,x+i*starWidth,starWidth),paint);
+                canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth()*x/starWidth,bitmap.getHeight()),new Rect(leftX,0,x+i*starWidth,starWidth*bitmapHeight/bitmapWidth),paint);
             }else{
                 if(stepNum*stepWidth/starWidth<i+1){
-                    canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth()*x/starWidth,bitmap.getHeight()),new Rect(leftX,0,x+i*starWidth,starWidth),paint);
+                    canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth()*x/starWidth,bitmap.getHeight()),new Rect(leftX,0,x+i*starWidth,starWidth*bitmapHeight/bitmapWidth),paint);
                 }else {
-                    canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth(),bitmap.getHeight()),new Rect(leftX,0,rightX,starWidth),paint);
+                    canvas.drawBitmap(bitmap,new Rect(0,0,bitmap.getWidth(),bitmap.getHeight()),new Rect(leftX,0,rightX,starWidth*bitmapHeight/bitmapWidth),paint);
                 }
             }
         }
@@ -128,12 +144,17 @@ public class MyRatingBar extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = getDefaultSize(getMeasuredWidth(), widthMeasureSpec);// 获得控件的宽度
         height = getDefaultSize(getMeasuredHeight(), heightMeasureSpec);//获得控件的高度
+
+        Bitmap bitmap=((BitmapDrawable)getResources().getDrawable(R.drawable.star_yellow_64)).getBitmap();
+        bitmapWidth=bitmap.getWidth();
+        bitmapHeight=bitmap.getHeight();
+
         if(width_height==0){
             starWidth=width/starSum;
-            setMeasuredDimension(width, starWidth);//设置宽和高
+            setMeasuredDimension(width, starWidth*bitmapHeight/bitmapWidth);//设置宽和高
         }else if(width_height==1){
             starWidth=height;
-            setMeasuredDimension(starWidth*starSum, starWidth);//设置宽和高
+            setMeasuredDimension(starWidth*starSum, starWidth*bitmapHeight/bitmapWidth);//设置宽和高
         }
     }
 
@@ -157,6 +178,9 @@ public class MyRatingBar extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if(isIndicator){
+            return false;
+        }
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 currentX=event.getX()+stepWidth/2;
@@ -172,6 +196,18 @@ public class MyRatingBar extends View {
                 }
                 invalidate();
                 break;
+            case MotionEvent.ACTION_UP:
+                stepWidth=step*starWidth;
+                int stepNum=(int)(currentX/stepWidth);
+                rating=round((double)stepNum*step,2);
+                getRating();
+
+                if(mOnRatingBarChangeListener!=null){
+                    mOnRatingBarChangeListener.onRatingChanged(rating);
+                }
+                break;
+
+
         }
         return super.onTouchEvent(event);
     }
@@ -186,6 +222,11 @@ public class MyRatingBar extends View {
     }
 
     public float getRating() {
+        if(rating>=starSum){
+            rating=starSum;
+        }else if(rating<=minStarNum){
+            rating=minStarNum;
+        }
         return rating;
     }
 
@@ -201,5 +242,20 @@ public class MyRatingBar extends View {
     public void setStep(float step) {
         this.step = step;
         invalidate();
+    }
+
+    //星值回调
+    public interface OnRatingBarChangeListener{
+        void onRatingChanged(float rating);
+    }
+
+    public void setOnRatingBarChangeListener(OnRatingBarChangeListener listener){
+        this.mOnRatingBarChangeListener=listener;
+    }
+
+    private int minStarNum=0;
+
+    public void setMinStarNum(int minStarNum){
+        this.minStarNum=minStarNum;
     }
 }

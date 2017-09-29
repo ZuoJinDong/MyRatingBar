@@ -7,6 +7,7 @@
             <enum name="width" value="0"/>
             <enum name="height" value="1"/>
         </attr>
+        <attr name="isIndicator" format="boolean"/>
         <attr name="step" format="float"/>
         <attr name="rating" format="float"/>
         <attr name="stars" format="integer"/>

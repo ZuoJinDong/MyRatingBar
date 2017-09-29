@@ -13,8 +13,61 @@
         app:stars="15"
         app:step="1"
         app:rating="10"
+        app:isIndicator="true"
+        android:id="@+id/ratingBar_1"
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_height="30dp" />
+
+    <com.zjd.myratingbar.MyRatingBar
+        android:id="@+id/ratingBar_2"
+        android:layout_margin="20dp"
+        android:background="#fd0000"
+        app:base_of_width_or_height="width"
+        app:stars="10"
+        app:step="0.5"
+        app:isIndicator="true"
+        app:rating="5"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="30dp" />
+
+    <com.zjd.myratingbar.MyRatingBar
+        android:id="@+id/ratingBar_3"
+        android:layout_margin="20dp"
+        android:background="#fd0000"
+        app:base_of_width_or_height="height"
+        app:stars="5"
+        app:step="0.01"
+        app:rating="5"
+        app:isIndicator="true"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:text="123"
+        android:textColor="#000000"
+        android:layout_margin="10dp"
+        android:id="@+id/tv_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="get_rating"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="setRating"
+        android:onClick="setRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
